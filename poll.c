@@ -12,17 +12,17 @@ int main() {
 
     // 填充sockaddr_in结构
     struct sockaddr_in server_addr;
-	memset(&server_addr, 0, sizeof(struct sockaddr_in));
+    memset(&server_addr, 0, sizeof(struct sockaddr_in));
 
     server_addr.sin_family = AF_INET;
-	server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-	server_addr.sin_port = htons(2048);
+    server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    server_addr.sin_port = htons(2048);
 
     // sockfd绑定ip，port
     if (-1 == bind(sockfd, (struct sockaddr*)&server_addr, sizeof(struct sockaddr))) {
-		perror("bind");
-		return -1;
-	}
+        perror("bind");
+        return -1;
+    }
 
     // sockfd进入监听状态
     listen(sockfd, 10);
